@@ -1,5 +1,5 @@
 import React from 'react';
-import styled from 'styled-components';
+// import styled from 'styled-components';
 
 const List = styled.div`
   background-color: white;
@@ -27,7 +27,7 @@ const LocationList = (props) => (
   console.log(props),
   <div>
     {props.locations.map(location =>
-      <List>
+      <List key={location.city}>
         <IconColor>
           <LocationIcon className="fas fa-map-marker-alt" />
         </IconColor>

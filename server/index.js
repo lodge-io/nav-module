@@ -10,15 +10,15 @@ const port = 3223;
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, '../client/dist')));
-// app.use('/host/:hostid', express.static(path.join(__dirname, '../client/dist')));
 app.use(cors());
 
 app.listen(port, () => {
   console.log(`http://localhost:${port} NavBar`);
 });
 
-app.post('/location', (req, res) => {
-  var str = req.body.loc;
+app.get('/api/location/:query', (req, res) => {
+  // var str = req.body.loc;
+  var str = req.params.query;
   var CapFirstLetter = /(\b[a-z](?!\s))/g;
   str = str.replace(CapFirstLetter, function(x){return x.toUpperCase();});
   const expression = `^${str}`

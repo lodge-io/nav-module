@@ -1,10 +1,14 @@
 import React from 'react';
 import $ from 'jquery';
 import LocationList from './locationlist.jsx';
-import styled from 'styled-components';
+// import styled from 'styled-components';
 
 const FontColor = '#484848';
 const FontStyle = 'Circular,-apple-system,BlinkMacSystemFont,Roboto,Helvetica Neue,sans-serif';
+
+const NavModule = styled.div`
+  height: 100px;
+`;
 
 const TopBar = styled.div`
   display: flex;
@@ -131,20 +135,19 @@ class App extends React.Component {
     } else {
       var string = query[0].toUpperCase() + query.slice(1);
       $.ajax({
-        method: 'POST',
-        url: '/location',
-        data: {loc: string},
+        method: 'GET',
+        url: `/api/location/${string}`,
+        // url: 'http://localhost:3223/location',
+        // data: {loc: string},
         success: dbLocations => this.setState({locations: dbLocations.slice(0, 5)}),
         error: () => (console.log('fail')),
       })
     }
   }
 
-
-
   render() {
     return (
-      <div>
+      <NavModule>
       <TopBar>  
         <Logo className="icon" src="images/lodge.jpg" />
         <SearchBar>
@@ -165,7 +168,7 @@ class App extends React.Component {
         <NavButtons>Sign up</NavButtons>
         <NavButtons>Log in</NavButtons>
       </NavBar>
-      </div>
+      </NavModule>
     );
   }
 }
