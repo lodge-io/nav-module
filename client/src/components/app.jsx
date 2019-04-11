@@ -118,6 +118,10 @@ const NavButtons = styled.span`
   }
 `;
 
+const SearchOutputBox = styled.div`
+  height: 0px;
+`;
+
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -157,9 +161,11 @@ class App extends React.Component {
             </FinderSize>
             <SearchInput onChange={e => {this.setState({query: e.target.value}, this.query)}}/>
           </SearchBox>
-          <SearchOutput>
-            {this.state.locations ? <LocationList locations={this.state.locations}/> : null}
-          </SearchOutput>
+          <SearchOutputBox>
+            <SearchOutput>
+              {this.state.locations ? <LocationList locations={this.state.locations}/> : null}
+            </SearchOutput>
+          </SearchOutputBox>
         </SearchBar>
       </TopBar>
       <NavBar>
