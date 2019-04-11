@@ -120,6 +120,7 @@ const NavButtons = styled.span`
 
 const SearchOutputBox = styled.div`
   height: 0px;
+  z-index: 1;
 `;
 
 class App extends React.Component {
