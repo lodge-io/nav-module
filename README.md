@@ -1,4 +1,4 @@
-# Nav-module
+# Nav Module
 
 ![](gif/Nav-Module.gif)
 
